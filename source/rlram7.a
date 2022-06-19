@@ -1,3 +1,4 @@
+    PLIST    ON
 ;**********************************************************************
 ;*                                                                    *
 ;*                   P R O J E C T :   REALITY_ENGINE                 *
@@ -370,6 +371,50 @@ TGZ			ds.w	1		; Object Z Coordinate
 TGdZUpper		ds.w	1		; Upper DeltaZ Bounds
 TGdZLower		ds.w	1		; Lower DeltaZ Bounds
 
+
+
+;
+;	* * * * * * *       PATCH VARIABLES       * * * * * * *
+;
+;
+;	>>>   MISCELLANEOUS VARIABLES   <<<
+;
+BaronOfHellCount	ds.b	1		; BaronOfHell Counter (E1M8 Special)
+			ds.b	1		; UNUSED
+;
+;	* * * * * * *       MULTIPLAYER VARIABLES       * * * * * * *
+;
+	ifn	useMULTIPLAYER
+MPPlayerObject		ds.w	1		; Player Object
+MPEnemyTarget		ds.w	1		; Enemy Target
+	endif
+;
+;	* * * * * * *       PATCH VARIABLES       * * * * * * *
+;
+	ifn	usePATCH
+PTRLDoTasks		ds.w	1		; _RLDoTasks
+PTRLMSObjects		ds.w	1		; _RLMSObjects
+PTRLMAObjects		ds.w	1		; _RLMAObjects
+PTRLEnemiesTarget	ds.w	1		; _RLEnemiesTarget
+PTRLPlayer		ds.w	1		; _RLPlayer
+PTRLWeapons		ds.w	1		; _RLWeapons
+PTRLDoSectors		ds.w	1		; _RLDoSectors
+PTRLMisc2		ds.w	1		; _RLMisc2
+PTRLBuildBSP		ds.w	1		; _RLBuildBSP
+PTRLBuildDone		ds.w	1		; _RLBuildDone
+;
+PTRLBuildCheckObjs	ds.w	1		; _RLBuildCheckObjs
+PTRLFireTarget		ds.w	1		; _RLFireTarget
+PTRLFireTarget2		ds.w	1		; _RLFireTarget2
+PTRLDamageObject	ds.w	1		; _RLDamageObject
+;
+PTRLMAPlayerDie		ds.w	1		; _RLMAPlayerDie
+PTTRO2SPlayer		ds.w	1		; _RLBuildTraceObjs2Player
+;
+	ifn	1
+PTRAM7A			ds.b	32		; PatchVariables 
+	endif
+	endif
 ;
 ;	* * * * * * *       VARIABLE BLOCK TRANSFERRED TO SNES       * * * * * * *
 ;
@@ -450,12 +495,6 @@ RLGSUXVarsE
 ;
 RLGSUSNESXVars		ds.b	(RLSNESXVarsE-RLSNESXVars)
 RLGSUSNESXVarsO		equ	RLGSUSNESXVars-RLSNESXVars	; to get SNES from GSU
-
-;
-;	* * * * * * *       PATCH VARIABLES       * * * * * * *
-;
-
-
 ;
 ;	* * * * * * *       RAM7 SHORT PAGE VARIABLES END       * * * * * * *
 ;
@@ -473,48 +512,13 @@ RLGSUSounds		ds.b	(MaxRLSounds*rlseSize)		; GSU Sound Effects Table
 _RLProjectileMoves	ds.w	(MaxRLMoveProjectiles+1)	; Moving Projectiles
 _RLProjectileMovesE
 
-;
-;	>>>   MISCELLANEOUS VARIABLES   <<<
-;
-BaronOfHellCount	ds.b	1		; BaronOfHell Counter (E1M8 Special)
-			ds.b	1		; UNUSED
-;
-;	* * * * * * *       MULTIPLAYER VARIABLES       * * * * * * *
-;
-	ifn	useMULTIPLAYER
-MPPlayerObject		ds.w	1		; Player Object
-MPEnemyTarget		ds.w	1		; Enemy Target
-	endif
-;
-;	* * * * * * *       PATCH VARIABLES       * * * * * * *
-;
+;	org $700340
 	ifn	usePATCH
-PTRLDoTasks		ds.w	1		; _RLDoTasks
-PTRLMSObjects		ds.w	1		; _RLMSObjects
-PTRLMAObjects		ds.w	1		; _RLMAObjects
-PTRLEnemiesTarget	ds.w	1		; _RLEnemiesTarget
-PTRLPlayer		ds.w	1		; _RLPlayer
-PTRLWeapons		ds.w	1		; _RLWeapons
-PTRLDoSectors		ds.w	1		; _RLDoSectors
-PTRLMisc2		ds.w	1		; _RLMisc2
-PTRLBuildBSP		ds.w	1		; _RLBuildBSP
-PTRLBuildDone		ds.w	1		; _RLBuildDone
-;
-PTRLBuildCheckObjs	ds.w	1		; _RLBuildCheckObjs
-PTRLFireTarget		ds.w	1		; _RLFireTarget
-PTRLFireTarget2		ds.w	1		; _RLFireTarget2
-PTRLDamageObject	ds.w	1		; _RLDamageObject
-;
-PTRLMAPlayerDie		ds.w	1		; _RLMAPlayerDie
-PTTRO2SPlayer		ds.w	1		; _RLBuildTraceObjs2Player
-;
-	ifn	0
-PTRAM7A			ds.b	32		; PatchVariables
-	endif
-	endif
-	ifn	usePATCH*0
 PTRAM7B			ds.b	64
 	endif
+;
+
+
 RAM7BEnd
 
 

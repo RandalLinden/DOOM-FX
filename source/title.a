@@ -84,7 +84,7 @@ Title
 	ldy	#$03				; BG1+BG2
 	lda	_TitleCount			; Every 8th Title
 	and	#$04
-	bne	TTL80
+	bne	TTL100
 	stz	BG2HOFS				; Offset $0100
 	lda	#1
 	sta	BG2HOFS

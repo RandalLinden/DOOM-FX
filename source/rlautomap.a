@@ -1104,8 +1104,8 @@ _DAM6000
 	move	r1,(<AMMObjPtr)
 	move	r0,(<ENEnemy)
 	dec	r0
-;	bra	_DAM9000
-	bmi	_DAM9000
+	bra	_DAM9000
+;	bmi	_DAM9000
 ;	from	r0
 	sbk
 _DAM6200
