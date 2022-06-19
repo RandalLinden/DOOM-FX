@@ -28,7 +28,7 @@ SCULPT.SCREEN
 
 SCULPT.PALSET
 SculptColorPallette
-	image	RLDATA:COMP/SCULPT.rgb
+	image	RLDATA:COMP/SCULPT.rgb,0,(16*4*2)
 
 
 ******************************************************************************

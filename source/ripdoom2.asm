@@ -22,7 +22,7 @@
 	xref	Task
 
 	xref	DoomWADFIB
-	xref	DoomWADName
+	xref	ConvertWAD
 	xref	DoomWADData,DoomWADDir
 	xref	DoomEntryName,DoomPrefixName,DoomFileName
 	xref	NumDirEntries
@@ -43,7 +43,7 @@
 ;
 DoRipDoom
 	move.l	DosBase,a6				; Open DOOM.WAD file
-	move.l	#DoomWADName,d1
+	move.l	ConvertWAD,d1
 	move.l	#1005,d2
 	jsr	_LVOOpen(a6)
 	move.l	#MSGDoomWADError,d7

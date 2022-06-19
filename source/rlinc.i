@@ -10,7 +10,7 @@
 ;
 ;	* * * * * * *       TARGET EXECUTABLE       * * * * * * *
 ;
-ROM			equ	0		; 1=ROM Version
+ROM			equ	1		; 1=ROM Version
 ;
 DEBUG			var	1*(1-ROM)	; 1=DEBUGGING Version
 DEBUGSCR		var	1*(1-ROM)	; 1=DEBUGGING SCREEN Version
